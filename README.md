@@ -1,2 +1,2 @@
 # spaceport9684
- /Users/mac/github/spaceport9684
+Croquet microverse loosely inspired by Starbase.
