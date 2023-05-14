@@ -8,9 +8,9 @@ export function init(Constants) {
         "newwhite", "madhatter", "marchhare", "queenofhearts", "cheshirecat", "alice"
     ];
 
-    Constants.UserBehaviorDirectory = "behaviors/tutorial";
+    Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "lights.js", "gridFloor.js", "joeTheBox.js"
+        "lights.js", "gridFloor.js", "urlLink.js", "joeTheBox.js"
     ];
 
     const frameColor = 0x888888;
@@ -73,7 +73,7 @@ export function init(Constants) {
 {
             card: {
                 name: "image card",
-                translation: [5, 0.4, -10],
+                translation: [8, 0.4, -10],
                 //rotation: [0, Math.PI / 2, 0],
 		layers: ["pointer", "walk"],
                 scale: [4, 4, 4],
@@ -83,6 +83,28 @@ export function init(Constants) {
                 fullBright: true,
                 frameColor: 0xcccccc,
                 color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+
+{
+            card: {
+                name: "image card",
+                translation: [0, 0.4, 10],
+                rotation: [0, Math.PI, 0],
+		layers: ["pointer", "walk"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/CroquetLogo.jpg",
+                cardURL: "https://croquet.io",
+                cardHilite: 0xffffaa,
+                behaviorModules: ["URLLink"],
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xbbbbbb,
                 cornerRadius: 0.05,
                 depth: 0.05,
                 shadow: true,
