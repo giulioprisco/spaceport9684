@@ -52,5 +52,42 @@ export function init(Constants) {
                 shadow: true,
             }
         },
+{
+            card: {
+                name: "image card",
+                translation: [5, 0.4, -10],
+                //rotation: [0, Math.PI / 2, 0],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/starbase-launch-area.jpg",
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+{
+            card: {
+                name: "text editor",
+                className: "TextFieldActor",
+                translation: [-5, 0.4, -10],
+                rotation: [0, 0, 0],
+                depth: 0.05,
+                type: "text",
+                runs: [{text: "This will be a space launch site running on port :9684,\nloosely inspired by SpaceX's Starbase in Texas."}],
+                margins: {left: 20, top: 20, right: 20, bottom: 20},
+                backgroundColor: 0xf4e056,
+                color: 0x000000,
+                //color: 0xf4e056,
+                frameColor: frameColor,
+                width: 2,
+                height: 2,
+                textScale: 0.004,
+                shadow: true,
+            }
+        },
     ];
 }
