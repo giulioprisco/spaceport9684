@@ -32,9 +32,26 @@ export function init(Constants) {
                 layers: ["light"],
                 type: "lighting",
                 behaviorModules: ["Light"],
-                clearColor: 0xaabbff,
+                dataLocation: "./assets/sky/bluesky.jpg",
+                fileName: "/bluesky.jpg",
+		dataType: "jpg",
             }
         },
+{
+            card: {
+		  	translation: [-5, -1.65, -5],
+			scale: [1.5, 1.5, 1.5],
+			rotation: [0, 0, 0],
+			layers: ["pointer", "walk"],
+			name: "/tesla-cybertruck.glb",
+			dataLocation: "./assets/3D/tesla-cybertruck.glb",
+			fileName: "/tesla-cybertruck.glb",
+			modelType: "glb",
+			shadow: false,
+			singleSided: true,    type: "3d",
+            }
+	},
+
         {
             card: {
                 name: "image card",
@@ -89,5 +106,6 @@ export function init(Constants) {
                 shadow: true,
             }
         },
+
     ];
 }
