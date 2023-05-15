@@ -9,7 +9,7 @@ class GridFloorPawn {
 
         // this is the base64 encoded version of a png file with the unit grid pattern.
         //let gridImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOnAAADusBZ+q87AAAAJtJREFUeJzt0EENwDAAxLDbNP6UOxh+NEYQ5dl2drFv286598GrA7QG6ACtATpAa4AO0BqgA7QG6ACtATpAa4AO0BqgA7QG6ACtATpAa4AO0BqgA7QG6ACtATpAa4AO0BqgA7QG6ACtATpAa4AO0BqgA7QG6ACtATpAa4AO0BqgA7QG6ACtATpAa4AO0BqgA7QG6ACtATpAu37AD8eaBH5JQdVbAAAAAElFTkSuQmCC";
-let gridImage = "./assets/images/green-noisy.jpg";
+let gridImage = "./assets/images/gridfloor.jpg";
 	
 
         let image = new Image();
@@ -19,7 +19,7 @@ let gridImage = "./assets/images/green-noisy.jpg";
 
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set( 100, 100 );
+        texture.repeat.set( 1, 1 );
 
         if (this.floor) {
             this.shape.remove(this.floor);
@@ -27,7 +27,7 @@ let gridImage = "./assets/images/green-noisy.jpg";
         }
 
         this.floor = new THREE.Mesh(
-            new THREE.BoxGeometry( 100, 0.1, 100, 1, 1, 1 ),
+            new THREE.BoxGeometry( 1500, 0.1, 1500, 1, 1, 1 ),
             new THREE.MeshStandardMaterial({ map: texture, color: 0xcccccc }));
         this.floor.receiveShadow = true;
         this.shape.add(this.floor);
