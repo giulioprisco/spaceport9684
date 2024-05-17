@@ -21,7 +21,7 @@ export function init(Constants) {
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "lights.js", "terrain.js", "ambientSound.js", "blowing.js", "urlLink.js", "replaceWorld.js", "walker.js"
+        "lights.js", "terrain.js", "ambientSound.js", "menus.js", "blowing.js", "urlLink.js", "replaceWorld.js", "walker.js"
     ];
 
 
