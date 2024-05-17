@@ -1,52 +1,32 @@
-class LightPawn {
+// the following import statement is solely for the type checking and
+// autocompletion features in IDE.  A Behavior cannot inherit from
+// another behavior or a base class but can use the methods and
+// properties of the card to which it is installed.
+// The prototype classes ActorBehavior and PawnBehavior provide
+// the features defined at the card object.
+
+import {ActorBehavior, PawnBehavior} from "../PrototypeBehavior";
+
+class LightPawn extends PawnBehavior {
     setup() {
-        /*
-          let trm = this.service("ThreeRenderManager");
-          let scene =  trm.scene;
-          let camera = trm.camera;
-        */
+        console.log("LightPawn");
+        let trm = this.service("ThreeRenderManager");
+        let scene =  trm.scene;
+        let camera = trm.camera;
         let group = this.shape;
-        let THREE = Microverse.THREE;
+
+        if (this.actor._cardData.toneMappingExposure !== undefined) {
+            trm.renderer.toneMappingExposure = this.actor._cardData.toneMappingExposure;
+        }
 
         this.removeLights();
-        this.lights = [];
 
-        const ambient = new THREE.AmbientLight( 0xffffff, .25 );
-        group.add(ambient);
-        this.lights.push(ambient);
+        this.setupCSM(scene, camera, Microverse.THREE);
 
-        const sun = new THREE.DirectionalLight( 0xffffff, 0.3 );
-        sun.position.set(9, 150, -10);
-        sun.castShadow = true;
-        sun.shadow.blurSamples = 5;
-        sun.shadow.camera.left = 40;
-        sun.shadow.camera.right = -30;
-        sun.shadow.camera.top = 30;
-        sun.shadow.camera.bottom = -30;
-        sun.shadow.mapSize.width = 2048; // default
-        sun.shadow.mapSize.height = 2048; // default
-        sun.shadow.normalBias = 1e-2;
-        sun.shadow.bias = - 1e-3;
-        sun.shadow.radius = 4;
-        group.add(sun);
-        this.lights.push(sun);
+ //       const ambient = new Microverse.THREE.AmbientLight( 0xffffff, .25 );
+ //       group.add(ambient);
+ //       this.lights.push(ambient);
 
-        const blueLight = new THREE.DirectionalLight(0x444488, 0.5);
-        blueLight.position.set(1, 100, 150);
-        group.add(blueLight);
-        this.lights.push(blueLight);
-
-        const redLight = new THREE.DirectionalLight(0x774444, 0.5);
-        redLight.position.set(1, 100, -150);
-        group.add(redLight);
-        this.lights.push(redLight);
-/*
-        const sunTarget = new THREE.Object3D();
-        sunTarget.position.set(1, 0, 8);
-        group.add(sunTarget);
-        this.lights.push(sunTarget);
-        sun.target = sunTarget;
-*/
         this.constructBackground(this.actor._cardData);
 
         let moduleName = this._behavior.module.externalName;
@@ -57,34 +37,17 @@ class LightPawn {
 
     removeLights() {
         if (this.lights) {
-            [...this.lights].forEach((light) => {
-                if (light.dispose) {
-                    light.dispose();
-                }
+            this.lights.forEach((light) => {
                 this.shape.remove(light);
             });
         }
-        delete this.lights;
-
-        if (this.csm) {
-	    for ( let i = 0; i < this.csm.lights.length; i ++ ) {
-	        this.csm.parent.remove( this.csm.lights[ i ].target );
-	    }
-            this.csm.remove();
-            this.csm.dispose();
-            delete this.csm;
-        }
+        this.lights = [];
     }
 
     teardown() {
         console.log("teardown lights");
+        if(this.background)this.background.dispose();
         this.removeLights();
-        let scene = this.service("ThreeRenderManager").scene;
-        scene.background?.dispose();
-        scene.environment?.dispose();
-        scene.background = null;
-        scene.environment = null;
-
     }
 
     updateShape(options) {
@@ -113,13 +76,36 @@ class LightPawn {
                 if(e !== bg) if(bg) bg.dispose();
                 if(e) e.dispose();
                 texture.dispose();
-            }).then(() => {
+
                 if (this.actor._cardData.loadSynchronously) {
-                    this.publish(
-                        this.sessionId, "synchronousCardLoaded", {id: this.actor.id});
+                    this.publish(this.sessionId, "synchronousCardLoaded", {id: this.actor.id});
                 }
             });
         });
+    }
+
+    setupCSM(scene, camera, THREE) {
+        if (this.csm) {
+            this.csm.remove();
+            this.csm = null;
+        }
+
+        let dir = new THREE.Vector3(-2,-2,0.5);
+        this.csm = new THREE.CSM({
+            fade: true,
+            far: camera.far,
+            maxFar: 1000,
+            cascades: 3,
+            shadowMapSize: 2048,
+            shadowbias: 0.00025,
+            lightDirection: dir,
+            camera: camera,
+            parent: scene,
+            lightIntensity: 0.6,
+            lightFar: 1000,
+            mode: "practical"
+        });
+        this.csm.update();
     }
 
     update(_time) {
@@ -130,7 +116,7 @@ class LightPawn {
 export default {
     modules: [
         {
-            name: "Light",
+            name: "Lights",
             pawnBehaviors: [LightPawn]
         }
     ]

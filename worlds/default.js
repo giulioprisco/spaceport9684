@@ -1,45 +1,138 @@
-// tutorial1.js
-// Copyright 2022 by Croquet Corporation, Inc. All Rights Reserved.
+// spaceport9684
+// A spaceport on a long strip of land in the sea.
+// The offices and social facilities are on one beach side.
+// The launch pads are on the other beach side.
+// Made with Croquet Microverse.
 // https://croquet.io
-// info@croquet.io
+// See behaviors/terrain.js for terrain specs.
+
 
 export function init(Constants) {
-    Constants.AvatarNames = [
-        "newwhite", "madhatter", "marchhare", "queenofhearts", "cheshirecat", "alice"
-    ];
+    Constants.AvatarNames = ["newwhite", "madhatter", "marchhare", "queenofhearts", "cheshirecat", "alice"].map((n) => ({
+        type: "3d",
+        name: n,
+        modelType: "glb",
+        avatarType: "wonderland",
+        dataLocation: `./assets/avatars/${n}.zip`,
+        dataRotation: [0, Math.PI, 0],
+        dataScale: [0.3, 0.3, 0.3],
+        behaviorModules: ["HillsideWalker"]
+    }));
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "lights.js", "gridFloor.js", "urlLink.js", "joeTheBox.js"
+        "lights.js", "terrain.js", "ambientSound.js", "blowing.js", "urlLink.js", "replaceWorld.js", "walker.js"
     ];
 
-    const frameColor = 0x888888;
+
+    // rotates an object around a center point.
+    function rotateTo(center, length, angle){
+        let pos = [];
+        pos.push(length*Math.sin(angle));
+        pos.push(0);
+        pos.push(length*Math.cos(angle));
+        pos[0]+=center[0];
+        pos[1]=center[1];
+        pos[2]+=center[2];
+        return pos;
+    }
 
     Constants.DefaultCards = [
-        {
+
+	{
             card: {
-                name:"world model",
-                behaviorModules: ["GridFloor"],
-                layers: ["walk"],
+                name: "entrance",
                 type: "object",
-                translation:[0, -2, 0],
-                shadow: true,
+                translation: [180, -3, 74],
+                rotation: [0, Math.PI/4, 0],
+                spawn: "default",
             }
-        },   
+        },
+
+        {
+	
+            card: {
+                name: "ambient sound",
+                // translation: [0, 0, 0],
+                // layers: ["pointer"],
+                type: "object",
+                behaviorModules: ["AmbientSound"],
+                dataType: "aac",
+                dataLocation: "./assets/sounds/WindAmbience.aac",
+                // textureLocation: "./assets/images/mythos.png",
+                loop: true,
+                volume: 0.2,
+                maxVolume: 0.3
+            },
+            id: "ambientSound"
+        },
+
         {
             card: {
                 name: "light",
                 layers: ["light"],
                 type: "lighting",
-                behaviorModules: ["Light"],
-                dataLocation: "./assets/sky/bluesky.jpg",
-                fileName: "/bluesky.jpg",
-		dataType: "jpg",
+                behaviorModules: ["Lights"],
+                dataType: "jpg",
+                dataLocation: "./assets/sky/aboveClouds.jpg",
+                attribution: "Above the Clouds texture from HDRMaps.com",
+                clearColor: 0xffffff,
+                loadSynchronously: true,
             }
         },
+
+
+
+        {
+            card: {
+                name: "Gallery Card",
+                behaviorModules: ["ReplaceWorld"],
+                replaceWorldTargetURL: "https://croquet.github.io/gallery",
+                replaceWorldPreserveOrigin: "//(.*\\.)?croquet.(io|dev)$",
+                //translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7),
+                //rotation: [0, 2*Math.PI/7, 0],
+                translation: [180, -3, 45],
+                rotation: [0, -Math.PI/4, 0, Math.PI/4],
+                layers: ["pointer"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/Croquet Gallery.png",
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+
 {
             card: {
-		  	translation: [-5, -1.65, -5],
+                name: "image card",
+                translation: [180, -3, 50],
+                rotation: [0, -Math.PI/4, 0, Math.PI/4],
+		layers: ["pointer", "walk"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/spaceport9684intropanel.jpg",
+                cardURL: "https://giulioprisco.github.io/notebook/#spaceport9684",
+                cardHilite: 0xffffaa,
+                behaviorModules: ["URLLink"],
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+        
+
+{
+            card: {
+		  	translation: [170, -4.8, 60],
 			scale: [1.5, 1.5, 1.5],
 			rotation: [0, 0, 0],
 			layers: ["pointer", "walk"],
@@ -52,84 +145,74 @@ export function init(Constants) {
             }
 	},
 
+{
+
+
+            card: {
+		  	translation: [174, -4.8, 64],
+			scale: [1.5, 1.5, 1.5],
+			rotation: [0, 0, 0],
+			layers: ["pointer", "walk"],
+			name: "/tesla-cybertruck.glb",
+			dataLocation: "./assets/3D/tesla-cybertruck.glb",
+			fileName: "/tesla-cybertruck.glb",
+			modelType: "glb",
+			shadow: false,
+			singleSided: true,    type: "3d",
+            }
+	},
+
+{
+
+
+            card: {
+		  	translation: [174, -5, 40],
+			scale: [1, 1, 1],
+			rotation: [0, 0, 0],
+			layers: ["pointer", "walk"],
+			name: "/army_hangar_ready_for_unreal_engine.glb",
+			dataLocation: "./assets/3D/army_hangar_ready_for_unreal_engine.glb",
+			fileName: "/army_hangar_ready_for_unreal_engine.glb",
+			modelType: "glb",
+			shadow: false,
+			singleSided: true,    type: "3d",
+            }
+	},
+
+
+{
+                 card: {
+                name: "space launch system",
+                translation: [-175, -5, -100],
+                scale: [8, 8, 8],
+                rotation: [0, 0, 0, 0],
+                layers: ["pointer", "walk"],
+                name: "/space_launch_system_sls.glb",
+                dataLocation: "./assets/3D/space_launch_system_sls.glb",
+                dataScale: [1, 1, 1],
+                fileName: "/space_launch_system_sls.glb",
+                modelType: "glb",
+                shadow: true,
+                singleSided: true,
+                type: "3d",
+
+
+      }
+        },
+
+
         {
             card: {
-                name: "image card",
-                translation: [0, 0.4, -10],
-                //rotation: [0, Math.PI / 2, 0],
-		layers: ["pointer", "walk"],
-                scale: [4, 4, 4],
-                type: "2d",
-                textureType: "image",
-                textureLocation: "./assets/images/starbase-boca-chica.jpg",
-                fullBright: true,
-                frameColor: 0xcccccc,
-                color: 0xffffff,
-                cornerRadius: 0.05,
-                depth: 0.05,
+                name:"Terrain",
+                behaviorModules: ["Terrain", "Menus"],
+                layers: ["terrain"],
+                type: "object",
+                translation:[0, 0, 0],
                 shadow: true,
+                attribution: "Terra   Mike Linkovich (spacejack) on Github",
             }
         },
-{
-            card: {
-                name: "image card",
-                translation: [8, 0.4, -10],
-                //rotation: [0, Math.PI / 2, 0],
-		layers: ["pointer", "walk"],
-                scale: [4, 4, 4],
-                type: "2d",
-                textureType: "image",
-                textureLocation: "./assets/images/starbase-launch-area.jpg",
-                fullBright: true,
-                frameColor: 0xcccccc,
-                color: 0xffffff,
-                cornerRadius: 0.05,
-                depth: 0.05,
-                shadow: true,
-            }
-        },
-
-{
-            card: {
-                name: "image card",
-                translation: [0, 0.4, 10],
-                rotation: [0, Math.PI, 0],
-		layers: ["pointer", "walk"],
-                scale: [4, 4, 4],
-                type: "2d",
-                textureType: "image",
-                textureLocation: "./assets/images/CroquetLogo.jpg",
-                cardURL: "https://croquet.io",
-                cardHilite: 0xffffaa,
-                behaviorModules: ["URLLink"],
-                fullBright: true,
-                frameColor: 0xcccccc,
-                color: 0xbbbbbb,
-                cornerRadius: 0.05,
-                depth: 0.05,
-                shadow: true,
-            }
-        },
-{
-            card: {
-                name: "text editor",
-                className: "TextFieldActor",
-                translation: [-5, 0, -10],
-                rotation: [0, 0, 0],
-                depth: 0.05,
-                type: "text",
-                runs: [{text: "This will be a space launch site running on port :9684,\nloosely inspired by SpaceX's Starbase in Texas."}],
-                margins: {left: 20, top: 20, right: 20, bottom: 20},
-                backgroundColor: 0xf4e056,
-                color: 0x000000,
-                //color: 0xf4e056,
-                frameColor: frameColor,
-                width: 2,
-                height: 2,
-                textScale: 0.004,
-                shadow: true,
-            }
-        },
-
+        
+        
     ];
 }
