@@ -20,7 +20,7 @@ class MenuPawn extends PawnBehavior {
         if(this.menuItems)this.teardown();
         this.menuItems = [];
         this.installMenu("Toggle Sound", "./assets/images/speaker-icon.png", ()=>this.publish("menu", "startStopWind"));
-        this.installMenu("Code on Github", "./assets/images/github.png", ()=>this.linkTo("https://github.com/croquet/mythos"));
+        this.installMenu("Code on Github", "./assets/images/github.png", ()=>this.linkTo("https://github.com/giulioprisco/spaceport9684"));
     
     }
 
