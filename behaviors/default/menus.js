@@ -19,9 +19,6 @@ class MenuPawn extends PawnBehavior {
     setup(){
         if(this.menuItems)this.teardown();
         this.menuItems = [];
-        this.installMenu("+100 bots", "./assets/images/masks-theater.png", ()=>this.publish("menu", "addBots"));
-        this.installMenu("Remove bots", "./assets/images/masks-theater-off.png", ()=>this.publish("menu", "killBots"));
-        this.installMenu("Toggle Fireball", "./assets/images/fireball.png", ()=>this.publish("menu","FireballToggle"));
         this.installMenu("Toggle Sound", "./assets/images/speaker-icon.png", ()=>this.publish("menu", "startStopWind"));
         this.installMenu("Code on Github", "./assets/images/github.png", ()=>this.linkTo("https://github.com/croquet/mythos"));
     
