@@ -39,15 +39,17 @@ export function init(Constants) {
 
     Constants.DefaultCards = [
 
+	
 	{
             card: {
                 name: "entrance",
                 type: "object",
                 translation: [180, -3, 74],
                 rotation: [0, Math.PI/4, 0],
-                spawn: "default",
+		spawn: "default",
             }
         },
+        
 
         {
 	
@@ -81,37 +83,31 @@ export function init(Constants) {
             }
         },
 
-
-
-        {
+{
             card: {
-                name: "Gallery Card",
-                behaviorModules: ["ReplaceWorld"],
-                replaceWorldTargetURL: "https://croquet.github.io/gallery",
-                replaceWorldPreserveOrigin: "//(.*\\.)?croquet.(io|dev)$",
-                //translation: rotateTo([0, 1.5, 4], -11.963, 2*Math.PI/7),
-                //rotation: [0, 2*Math.PI/7, 0],
-                translation: [180, -3, 45],
-                rotation: [0, -Math.PI/4, 0, Math.PI/4],
-                layers: ["pointer"],
+                name: "About",
+                translation: [180, -2.5, 50],
+                rotation: [0, -Math.PI/2, 0],
                 scale: [4, 4, 4],
-                type: "2d",
-                textureType: "image",
-                textureLocation: "./assets/images/Croquet Gallery.png",
-                fullBright: true,
-                frameColor: 0xcccccc,
-                color: 0xffffff,
-                cornerRadius: 0.05,
+                layers: ["pointer", "walk"],
+                behaviorModules: ["PDFView"],
+                color: 8947848,
                 depth: 0.05,
+                frameColor: 16777215,
+                fullBright: true,
+                modelType: "pdf",
+                pdfLocation: "./assets/PDF/Spaceport9684Readme.pdf",
                 shadow: true,
+                singleSided: true,
+                type: "2d",
             }
         },
 
 {
             card: {
                 name: "image card",
-                translation: [180, -3, 50],
-                rotation: [0, -Math.PI/4, 0, Math.PI/4],
+                translation: [180, -3, 45],
+                rotation: [0, -Math.PI/2, 0],
 		layers: ["pointer", "walk"],
                 scale: [4, 4, 4],
                 type: "2d",
@@ -128,6 +124,29 @@ export function init(Constants) {
                 shadow: true,
             }
         },
+
+{
+            card: {
+                name: "Gallery Card",
+                behaviorModules: ["ReplaceWorld"],
+                replaceWorldTargetURL: "https://croquet.github.io/gallery",
+                replaceWorldPreserveOrigin: "//(.*\\.)?croquet.(io|dev)$",
+                translation: [180, -3, 40],
+                rotation: [0, -Math.PI/2, 0],
+                layers: ["pointer", "walk"],
+                scale: [4, 4, 4],
+                type: "2d",
+                textureType: "image",
+                textureLocation: "./assets/images/beam-me-up-scotty.jpg",
+                fullBright: true,
+                frameColor: 0xcccccc,
+                color: 0xffffff,
+                cornerRadius: 0.05,
+                depth: 0.05,
+                shadow: true,
+            }
+        },
+
         
 
 {
