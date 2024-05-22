@@ -199,33 +199,10 @@ export function init(Constants) {
             }
 	},
 
-/*
-{
-                 card: {
-                name: "space launch system",
-                translation: [-175, -5, -100],
-                scale: [8, 8, 8],
-                rotation: [0, 0, 0, 0],
-                layers: ["pointer", "walk"],
-                name: "/space_launch_system_sls.glb",
-                dataLocation: "./assets/3D/space_launch_system_sls.glb",
-                dataScale: [1, 1, 1],
-                fileName: "/space_launch_system_sls.glb",
-                modelType: "glb",
-                shadow: true,
-                singleSided: true,
-                type: "3d",
-		attribution: "clarence365 at sketch fab",
-
-
-      }
-        },
-*/
-
 {
                  card: {
                 name: "spacex starship",
-                translation: [-175, -5, -100],
+                translation: [-175, -1, -100],
                 scale: [1, 1, 1],
                 rotation: [0, 0, 0, 0],
                 layers: ["pointer", "walk"],
