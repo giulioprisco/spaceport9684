@@ -195,10 +195,11 @@ export function init(Constants) {
 			modelType: "glb",
 			shadow: false,
 			singleSided: true,    type: "3d",
+                        attribution: "G4AGamingLabs at sketch fab",
             }
 	},
 
-
+/*
 {
                  card: {
                 name: "space launch system",
@@ -214,7 +215,29 @@ export function init(Constants) {
                 shadow: true,
                 singleSided: true,
                 type: "3d",
+		attribution: "clarence365 at sketch fab",
 
+
+      }
+        },
+*/
+
+{
+                 card: {
+                name: "spacex starship",
+                translation: [-175, -5, -100],
+                scale: [1, 1, 1],
+                rotation: [0, 0, 0, 0],
+                layers: ["pointer", "walk"],
+                name: "/spacex_starship_ship_s25__booster_9.glb",
+                dataLocation: "./assets/3D/spacex_starship_ship_s25__booster_9.glb",
+                dataScale: [1, 1, 1],
+                fileName: "/spacex_starship_ship_s25__booster_9.glb",
+                modelType: "glb",
+                shadow: true,
+                singleSided: true,
+                type: "3d",
+                attribution: "clarence365 at sketch fab",
 
       }
         },
