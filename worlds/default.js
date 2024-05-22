@@ -161,6 +161,7 @@ export function init(Constants) {
 			modelType: "glb",
 			shadow: false,
 			singleSided: true,    type: "3d",
+                        attribution: "Ivan Norman at sketch fab",
             }
 	},
 
@@ -178,6 +179,7 @@ export function init(Constants) {
 			modelType: "glb",
 			shadow: false,
 			singleSided: true,    type: "3d",
+                        attribution: "Ivan Norman at sketch fab",
             }
 	},
 
@@ -200,9 +202,45 @@ export function init(Constants) {
 	},
 
 {
+
+
+            card: {
+		  	translation: [174, -5, 0],
+			scale: [1, 1, 1],
+			rotation: [0, Math.PI/2, 0],
+			layers: ["pointer", "walk"],
+			name: "/army_hangar_ready_for_unreal_engine.glb",
+			dataLocation: "./assets/3D/army_hangar_ready_for_unreal_engine.glb",
+			fileName: "/army_hangar_ready_for_unreal_engine.glb",
+			modelType: "glb",
+			shadow: false,
+			singleSided: true,    type: "3d",
+                        attribution: "G4AGamingLabs at sketch fab",
+            }
+	},
+
+{
+
+
+            card: {
+		  	translation: [174, -5, -40],
+			scale: [1, 1, 1],
+			rotation: [0, 0, 0],
+			layers: ["pointer", "walk"],
+			name: "/army_hangar_ready_for_unreal_engine.glb",
+			dataLocation: "./assets/3D/army_hangar_ready_for_unreal_engine.glb",
+			fileName: "/army_hangar_ready_for_unreal_engine.glb",
+			modelType: "glb",
+			shadow: false,
+			singleSided: true,    type: "3d",
+                        attribution: "G4AGamingLabs at sketch fab",
+            }
+	},
+
+{
                  card: {
                 name: "spacex starship",
-                translation: [-175, -1, -100],
+                translation: [-175, -2, -100],
                 scale: [1, 1, 1],
                 rotation: [0, 0, 0, 0],
                 layers: ["pointer", "walk"],
@@ -218,7 +256,6 @@ export function init(Constants) {
 
       }
         },
-
 
         {
             card: {
