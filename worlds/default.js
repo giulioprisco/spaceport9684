@@ -257,6 +257,27 @@ export function init(Constants) {
       }
         },
 
+{
+                 card: {
+                name: "launch tower",
+                translation: [-175, -4, -75],
+                scale: [6, 6, 6],
+                rotation: [0, Math.PI/2, 0],
+                layers: ["pointer", "walk"],
+                name: "/launch-tower.glb",
+                dataLocation: "./assets/3D/launch-tower.glb",
+                dataScale: [1, 1, 1],
+                fileName: "/launch-tower.glb",
+                modelType: "glb",
+                shadow: true,
+                singleSided: true,
+                type: "3d",
+                attribution: "cgtrader dot com",
+
+      }
+        },
+
+
         {
             card: {
                 name:"Terrain",
