@@ -251,7 +251,7 @@ export function init(Constants) {
 			modelType: "glb",
 			shadow: false,
 			singleSided: true,    type: "3d",
-                        attribution: "G4AGamingLabs at sketch fab",
+                        attribution: "helijah at sketch fab",
             }
 	},
 
