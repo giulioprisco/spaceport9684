@@ -238,6 +238,24 @@ export function init(Constants) {
 	},
 
 {
+
+
+            card: {
+		  	translation: [134, -1.25, 66],
+			scale: [1.5, 1.5, 1.5],
+			rotation: [0, 3*Math.PI/4, 0],
+			layers: ["pointer", "walk"],
+			name: "/airbus-helicopter_s365_dauphin.glb",
+			dataLocation: "./assets/3D/airbus-helicopter_s365_dauphin.glb",
+			fileName: "/airbus-helicopter_s365_dauphin.glb",
+			modelType: "glb",
+			shadow: false,
+			singleSided: true,    type: "3d",
+                        attribution: "G4AGamingLabs at sketch fab",
+            }
+	},
+
+{
                  card: {
                 name: "spacex starship",
                 translation: [-175, -2, -100],
