@@ -278,7 +278,7 @@ export function init(Constants) {
 {
                  card: {
                 name: "launch tower",
-                translation: [-175, -4, -75],
+                translation: [-175, -3.5, -75],
                 scale: [6, 6, 6],
                 rotation: [0, Math.PI/2, 0],
                 layers: ["pointer", "walk"],
