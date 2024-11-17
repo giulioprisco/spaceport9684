@@ -129,7 +129,7 @@ export function init(Constants) {
             card: {
                 name: "Gallery Card",
                 behaviorModules: ["ReplaceWorld"],
-                replaceWorldTargetURL: "https://croquet.github.io/gallery",
+                replaceWorldTargetURL: "https://giulioprisco.github.io/mars9684/",
                 replaceWorldPreserveOrigin: "//(.*\\.)?croquet.(io|dev)$",
                 translation: [180, -3, 40],
                 rotation: [0, -Math.PI/2, 0],
@@ -137,7 +137,7 @@ export function init(Constants) {
                 scale: [4, 4, 4],
                 type: "2d",
                 textureType: "image",
-                textureLocation: "./assets/images/beam-me-up-scotty.jpg",
+                textureLocation: "./assets/images/teleportmars9684.jpg",
                 fullBright: true,
                 frameColor: 0xcccccc,
                 color: 0xffffff,
