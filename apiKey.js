@@ -1,1 +1,1 @@
-const apiKey="1kqqCo8JonFi8D07IktLjfk0cLcyCCpLFuy5vfoM5",appId="com.gmail.giulio.Croquet-1";export default{apiKey,appId};
+const apiKey="2NvCuWTPempjxf9HKf9qoQA4ZIfZmJe5qkWhkxL5EW",appId="com.gmail.giulio.Croquet-1";export default{apiKey,appId};
